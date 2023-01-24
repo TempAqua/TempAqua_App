@@ -1,8 +1,8 @@
--- Table: tempaqua_sample.anchor_point
+-- Table: public.anchor_point
 
--- DROP TABLE IF EXISTS tempaqua_sample.anchor_point;
+-- DROP TABLE IF EXISTS public.anchor_point;
 
-CREATE TABLE IF NOT EXISTS tempaqua_sample.anchor_point
+CREATE TABLE IF NOT EXISTS public.anchor_point
 (
     id character varying(254) COLLATE pg_catalog."default",
     parent_id character varying(254) COLLATE pg_catalog."default",
@@ -14,13 +14,13 @@ CREATE TABLE IF NOT EXISTS tempaqua_sample.anchor_point
 
 TABLESPACE pg_default;
 
-ALTER TABLE IF EXISTS tempaqua_sample.anchor_point
-    OWNER to docker;
+-- ALTER TABLE IF EXISTS public.anchor_point
+--     OWNER to docker;
 -- Index: anchor_point_geom_1674141386829
 
--- DROP INDEX IF EXISTS tempaqua_sample.anchor_point_geom_1674141386829;
+-- DROP INDEX IF EXISTS public.anchor_point_geom_1674141386829;
 
 CREATE INDEX IF NOT EXISTS anchor_point_geom_1674141386829
-    ON tempaqua_sample.anchor_point USING gist
+    ON public.anchor_point USING gist
     (geom)
     TABLESPACE pg_default;
