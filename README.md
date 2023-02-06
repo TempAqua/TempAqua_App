@@ -38,11 +38,86 @@ The system is composed with the following elements :
 
 The following are the steps to install and utilize the TempAqua app, using a sample project as an example. After completing the installation process, users will have the capability to create their own data collection tool.
 
-
-
 ## Requirement
 
 Docker and Git must both be installed on the system and have internet access. It should be configured in such a way that it is accessible through a fixed IP address for ease of use and to ensure link with Qfield.
+
+
+
+# Steps
+
+The installation process involves these steps:
+
+1. [Install the PostgreSQL DB.](PostgreSQL) 
+
+2. [Install QGIS.](QGIS)
+
+3. [Clone the repository.](Get-the-code)
+
+4. [Define user parameters.](Define-user-parameters) 
+
+5. [Create QGIS project.](Create-QGIS-project) 
+
+6. [Create Qfieldcloud account.](Qfield-cloud)
+
+7. [Install Qfield on your mobile device.](Qfield)
+
+8. [Link QfiledCloud and the DB.](Link-Qfield-cloud-and-database)
+
+
+
+### PosgreSQL
+
+We use docker to install PostgreSQL / Postgis. It can be install in a local machine or and a remote server.
+
+Installation steps :
+
+1. Move into the TempAqua folder
+   
+   `cd TempAqua`
+
+2. Copy the `.env_template` into `.env` and add with a text editor the *POSTGRES_USER* and *POSTGRES_PASSWORD*
+
+3. Run the docker-compose
+   
+   `docker-compose up -d`
+
+`docker run -d -p 5432:5432 --name postgis postgis/postgis`
+
+Upon completion of the prvious tasks, you will have the ability to connect to the PostgreSQL database utilizing your preferred database administration tool. Sample dataset is loaded during this intallation process.
+
+DB acces and crendentials :
+
+- Address : localhost or the name/IP of the machine you install PsotgeSQL in.
+
+- DB name : tempaqua
+
+- Schema : tempaqua_sample
+
+- DB Admin User : the one define in the .env file
+
+- DB Admin password: the one define in the .env file
+
+
+
+**SSL certificates**
+
+Installing SSL certificates on websites is important for ensuring secure transmission of data by encrypting the data transmitted between the user's web browser and the website. It also helps to build trust and credibility with users by verifying the website's identity and ensuring that the connection is secure.
+
+Installation steps :
+
+1. Download and install OpenSSL.
+
+2. Go to the folder `./cert`
+
+
+
+### QGIS
+
+1. Download and Install the latest version from the [official web page](https://www.qgis.org/en/site/forusers/download.html).
+
+2. In QGIS, open the plugin library and search for **qfield sync**. Select
+   the plugin in the list and click on **Install**.
 
 
 
@@ -54,59 +129,15 @@ Installation steps :
 
 
 
-## SSL certificates
+### Define user parameters
 
-Installing SSL certificates on websites is important for ensuring secure transmission of data by encrypting the data transmitted between the user's web browser and the website. It also helps to build trust and credibility with users by verifying the website's identity and ensuring that the connection is secure.
-
-Installation steps :
-
-1. Download and install OpenSSL. 
-
-2. Go to the folder `./cert`
-
-3. 
+(DB credentials + naming) in `.env` file.
 
 
 
+### Create QGIS project
 
-
-
-
-## PosgreSQL
-
-We use docker to install PostgreSQL / Postgis. It can be install in a local machine or and a remote server.
-
-Installation steps :
-
-1. Move into the TempAqua folder
-   
-   `cd TempAqua`
-2. Copy the `.env_template` into `.env` and add with a text editor the *POSTGRES_USER* and *POSTGRES_PASSWORD* 
-3. Run the docker-compose
-   
-    `docker-compose up -d`
-
-
-
-`docker run -d -p 5432:5432 --name postgis postgis/postgis`
-
-
-
-Upon completion of the prvious tasks, you will have the ability to connect to the PostgreSQL database utilizing your preferred database administration tool. Sample dataset is loaded during this intallation process. 
-
-DB acces and crendentials : 
-
-* Address :  localhost or the name/IP of the machine you install PsotgeSQL in.
-
-* DB name : tempaqua
-
-* Schema : tempaqua_sample
-
-* DB Admin User : the one define in the .env file
-
-* DB Admin password: the one define in the .env file
-
-
+Run python scripts within QGIS to set up table and Qgis project.
 
 
 
@@ -114,17 +145,14 @@ DB acces and crendentials :
 
 To do
 
-## QGIS
-
-1. Download and Install the latest version from the [official web page](https://www.qgis.org/en/site/forusers/download.html).
-
-2. In QGIS, open the plugin library and search for **qfield sync**. Select
-   the plugin in the list and click on **Install**.
-   
-   ![ ](doc\static\qfield-sync_install.png)
+##
 
 ## Qfield
 
 Install the app on your mobile. Installation guide [here](https://docs.qfield.org/get-started).  
 
 ## 
+
+### Link Qfield cloud and database
+
+![ ](doc\static\qfield-sync_install.png)
