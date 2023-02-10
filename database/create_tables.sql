@@ -7,13 +7,14 @@ CREATE EXTENSION postgis;
 
 CREATE TABLE IF NOT EXISTS tempaqua_sample.anchor_point
 (
-    id SERIAL PRIMARY KEY,
+    id integer NOT NULL DEFAULT 'nextval('tempaqua_sample.anchor_point_id_seq'::regclass)',
 	point_id character varying(254) COLLATE pg_catalog."default",
     parent_point_id character varying(254) COLLATE pg_catalog."default",
     catchment_name character varying(254) COLLATE pg_catalog."default",
     location_type character varying(254) COLLATE pg_catalog."default",
     description text COLLATE pg_catalog."default",
-    geom public.geometry(Geometry,4326)
+    geom public.geometry(Geometry,4326),
+	CONSTRAINT anchor_point_pkey PRIMARY KEY (id)
 )
 
 TABLESPACE pg_default;
