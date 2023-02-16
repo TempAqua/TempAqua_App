@@ -66,7 +66,7 @@ The installation process involves these steps:
 
 
 
-### PosgreSQL
+### PostgreSQL
 
 We use Docker to install PostgreSQL / PostGIS. It can be installed on a local machine or remote server.
 
@@ -81,7 +81,7 @@ You can deploy the dockerised PostgreSQL from the related project [TempAqua_DB](
    the plugin in the list and click on **Install**.
 
 3. Add required python libraries
-   - Open OSGeo4W shell (packed with QGIS in the start menu)
+   - Open `OSGeo4W shell` (packed with QGIS in the start menu)
    - Use Python’s pip to install the libraries:
      - `pip install -U python-dotenv`
    - Re-launch QGIS
