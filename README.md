@@ -80,6 +80,12 @@ You can deploy the dockerised PostgreSQL from the related project [TempAqua_DB](
 2. In QGIS, open the plugin library and search for **qfield sync**. Select
    the plugin in the list and click on **Install**.
 
+3. Add required python libraries
+   - Open OSGeo4W shell (packed with QGIS in the start menu)
+   - Use Python’s pip to install the libraries:
+     - `pip install -U python-dotenv`
+   - Re-launch QGIS
+
 
 
 ## Get the Code
@@ -88,24 +94,18 @@ Installation steps :
 
 1. Clone the repository: `git clone https://github.com/TempAqua/TempAqua_App.git`
 
-
-
 ### Define user parameters
 
 (DB credentials + naming) in `.env` file.
 
-
+### Create PostGIS schema, table, role and import sample data
+1. In QGIS, open the `./empty.qgs` project.
+2. Go to `Project Home` and run create_schema_and_user.py
 
 ### Create QGIS project
 
-Run python scripts within QGIS to set up table and Qgis project.
-
-#### Add required python libraries
-   - Open OSGeo4W shell (packed with QGIS in the start menu)
-   - Use Python’s pip to install the libraries:
-     - `pip install -U python-dotenv`
-   - Re-launch QGIS
-
+1. Go to `Project Home` and run setup_proj.py
+2. Open the project `./qfield/tempaqua_sample_project.qgs`
 
 ## QFieldCloud
 
