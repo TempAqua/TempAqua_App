@@ -26,12 +26,12 @@
         <Option/>
       </customproperties>
     </layer-tree-layer>
-    <layer-tree-layer source="dbname='tempaqua' host=localhost port=5432 user='tempaqua' sslmode=disable key='id' srid=4326 type=Point checkPrimaryKeyUnicity='0' table=&quot;tempaqua_sample&quot;.&quot;anchor_point&quot; (geom)" legend_exp="" legend_split_behavior="0" patch_size="-1,-1" expanded="1" checked="Qt::Checked" id="anchor_point_163ea04e_3ebe_46cd_9ca6_054f1f657caf" name="anchor_point" providerKey="postgres">
+    <layer-tree-layer source="dbname='${POSTGRES_DB}' host=${POSTGRES_HOST} port=${POSTGRES_PORT} user='${TEMPAQUA_USER}' sslmode=${POSTGRES_SSLMODE} key='id' srid=4326 type=Point checkPrimaryKeyUnicity='0' table=&quot;${TEMPAQUA_SCHEMA}&quot;.&quot;anchor_point&quot; (geom)" legend_exp="" legend_split_behavior="0" patch_size="-1,-1" expanded="1" checked="Qt::Checked" id="anchor_point_163ea04e_3ebe_46cd_9ca6_054f1f657caf" name="anchor_point" providerKey="postgres">
       <customproperties>
         <Option/>
       </customproperties>
     </layer-tree-layer>
-    <layer-tree-layer source="?layer=postgres:dbname%3D%27tempaqua%27%20host%3Dlocalhost%20port%3D5432%20user%3D%27tempaqua%27%20password%3D%27tempaqua%27%20sslmode%3Ddisable%20srid%3D4326%20type%3DPoint%20table%3D%22tempaqua_sample%22.%22anchor_point%22%20%28geom%29:anchor_point:&amp;query=SELECT%0D%0A%20%20a.id%20*%20b.id%20AS%20id,%0D%0A%20%20make_line(a.geometry,%20b.geometry)%20AS%20line,%0D%0A%20%20st_length(make_line(a.geometry,%20b.geometry))%20AS%20length%0D%0AFROM%20anchor_point%20a%0D%0AJOIN%20anchor_point%20b%20ON%20b.parent_point_id%20%3D%20a.point_id&amp;geometry=geometry:2:4326" legend_exp="" legend_split_behavior="0" patch_size="-1,-1" expanded="1" checked="Qt::Checked" id="segment_5eec6761_8a5a_4cee_b7d1_75724ec263cc" name="segment" providerKey="virtual">
+    <layer-tree-layer source="?layer=postgres:dbname%3D%27${POSTGRES_DB}%27%20host%3D${POSTGRES_HOST}%20port%3D${POSTGRES_PORT}%20user%3D%27${TEMPAQUA_USER}%27%20password%3D%27${TEMPAQUA_PASSWORD}%27%20sslmode%3D${POSTGRES_SSLMODE}%20srid%3D4326%20type%3DPoint%20table%3D%22${TEMPAQUA_SCHEMA}%22.%22anchor_point%22%20%28geom%29:anchor_point:&amp;query=SELECT%0D%0A%20%20a.id%20*%20b.id%20AS%20id,%0D%0A%20%20make_line(a.geometry,%20b.geometry)%20AS%20line,%0D%0A%20%20st_length(make_line(a.geometry,%20b.geometry))%20AS%20length%0D%0AFROM%20anchor_point%20a%0D%0AJOIN%20anchor_point%20b%20ON%20b.parent_point_id%20%3D%20a.point_id&amp;geometry=geometry:2:4326" legend_exp="" legend_split_behavior="0" patch_size="-1,-1" expanded="1" checked="Qt::Checked" id="segment_5eec6761_8a5a_4cee_b7d1_75724ec263cc" name="segment" providerKey="virtual">
       <customproperties>
         <Option/>
       </customproperties>
@@ -386,7 +386,7 @@
         <ymax>46.5920879416166045</ymax>
       </wgs84extent>
       <id>anchor_point_163ea04e_3ebe_46cd_9ca6_054f1f657caf</id>
-      <datasource>dbname='tempaqua' host=localhost port=5432 user='tempaqua' password='tempaqua' sslmode=disable key='id' srid=4326 type=Point checkPrimaryKeyUnicity='0' table="tempaqua_sample"."anchor_point" (geom)</datasource>
+      <datasource>dbname='${POSTGRES_DB}' host=${POSTGRES_HOST} port=${POSTGRES_PORT} user='${TEMPAQUA_USER}' password='${TEMPAQUA_PASSWORD}' sslmode=${POSTGRES_SSLMODE} key='id' srid=4326 type=Point checkPrimaryKeyUnicity='0' table="${TEMPAQUA_SCHEMA}"."anchor_point" (geom)</datasource>
       <keywordList>
         <value></value>
       </keywordList>
@@ -882,7 +882,7 @@
                 <Option value="anchor_point_163ea04e_3ebe_46cd_9ca6_054f1f657caf" type="QString" name="Layer"/>
                 <Option value="anchor_point" type="QString" name="LayerName"/>
                 <Option value="postgres" type="QString" name="LayerProviderName"/>
-                <Option value="dbname='tempaqua' host=localhost port=5432 user='tempaqua' sslmode=disable key='id' srid=4326 type=Point checkPrimaryKeyUnicity='0' table=&quot;tempaqua_sample&quot;.&quot;anchor_point&quot; (geom)" type="QString" name="LayerSource"/>
+                <Option value="dbname='${POSTGRES_DB}' host=${POSTGRES_HOST} port=${POSTGRES_PORT} user='${TEMPAQUA_USER}' sslmode=${POSTGRES_SSLMODE} key='id' srid=4326 type=Point checkPrimaryKeyUnicity='0' table=&quot;${TEMPAQUA_SCHEMA}&quot;.&quot;anchor_point&quot; (geom)" type="QString" name="LayerSource"/>
                 <Option value="1" type="int" name="NofColumns"/>
                 <Option value="false" type="bool" name="OrderByValue"/>
                 <Option value="false" type="bool" name="UseCompleter"/>
@@ -1311,7 +1311,7 @@ def my_form_open(dialog, layer, feature):
       </geometryOptions>
       <legend showLabelLegend="0" type="default-vector"/>
       <referencedLayers>
-        <relation referencingLayer="photo_3b20ef7c_eac1_4b45_85a6_ab1c41d5990f" referencedLayer="anchor_point_163ea04e_3ebe_46cd_9ca6_054f1f657caf" layerName="anchor_point" layerId="anchor_point_163ea04e_3ebe_46cd_9ca6_054f1f657caf" id="photo_3b20_anchor_id_anchor_poi_id" name="pictures" strength="Composition" dataSource="dbname='tempaqua' host=localhost port=5432 user='tempaqua' sslmode=disable key='id' srid=4326 type=Point checkPrimaryKeyUnicity='0' table=&quot;tempaqua_sample&quot;.&quot;anchor_point&quot; (geom)" providerKey="postgres">
+        <relation referencingLayer="photo_3b20ef7c_eac1_4b45_85a6_ab1c41d5990f" referencedLayer="anchor_point_163ea04e_3ebe_46cd_9ca6_054f1f657caf" layerName="anchor_point" layerId="anchor_point_163ea04e_3ebe_46cd_9ca6_054f1f657caf" id="photo_3b20_anchor_id_anchor_poi_id" name="pictures" strength="Composition" dataSource="dbname='${POSTGRES_DB}' host=${POSTGRES_HOST} port=${POSTGRES_PORT} user='${TEMPAQUA_USER}' sslmode=${POSTGRES_SSLMODE} key='id' srid=4326 type=Point checkPrimaryKeyUnicity='0' table=&quot;${TEMPAQUA_SCHEMA}&quot;.&quot;anchor_point&quot; (geom)" providerKey="postgres">
           <fieldRef referencingField="anchor_id" referencedField="id"/>
         </relation>
       </referencedLayers>
@@ -1480,7 +1480,7 @@ def my_form_open(dialog, layer, feature):
         <ymax>46.5920879416166045</ymax>
       </wgs84extent>
       <id>segment_5eec6761_8a5a_4cee_b7d1_75724ec263cc</id>
-      <datasource>?layer=postgres:dbname%3D%27tempaqua%27%20host%3Dlocalhost%20port%3D5432%20user%3D%27tempaqua%27%20password%3D%27tempaqua%27%20sslmode%3Ddisable%20srid%3D4326%20type%3DPoint%20table%3D%22tempaqua_sample%22.%22anchor_point%22%20%28geom%29:anchor_point:&amp;query=SELECT%0D%0A%20%20a.id%20*%20b.id%20AS%20id,%0D%0A%20%20make_line(a.geometry,%20b.geometry)%20AS%20line,%0D%0A%20%20st_length(make_line(a.geometry,%20b.geometry))%20AS%20length%0D%0AFROM%20anchor_point%20a%0D%0AJOIN%20anchor_point%20b%20ON%20b.parent_point_id%20%3D%20a.point_id&amp;geometry=geometry:2:4326</datasource>
+      <datasource>?layer=postgres:dbname%3D%27${POSTGRES_DB}%27%20host%3D${POSTGRES_HOST}%20port%3D${POSTGRES_PORT}%20user%3D%27${TEMPAQUA_USER}%27%20password%3D%27${TEMPAQUA_PASSWORD}%27%20sslmode%3D${POSTGRES_SSLMODE}%20srid%3D4326%20type%3DPoint%20table%3D%22${TEMPAQUA_SCHEMA}%22.%22anchor_point%22%20%28geom%29:anchor_point:&amp;query=SELECT%0D%0A%20%20a.id%20*%20b.id%20AS%20id,%0D%0A%20%20make_line(a.geometry,%20b.geometry)%20AS%20line,%0D%0A%20%20st_length(make_line(a.geometry,%20b.geometry))%20AS%20length%0D%0AFROM%20anchor_point%20a%0D%0AJOIN%20anchor_point%20b%20ON%20b.parent_point_id%20%3D%20a.point_id&amp;geometry=geometry:2:4326</datasource>
       <keywordList>
         <value></value>
       </keywordList>

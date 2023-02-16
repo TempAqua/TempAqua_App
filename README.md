@@ -40,7 +40,7 @@ The following are the steps to install and utilize the TempAqua app, using a sam
 
 ## Requirement
 
-Docker and Git must both be installed on the system and have internet access. It should be configured in such a way that it is accessible through a fixed IP address for ease of use and to ensure link with Qfield.
+Docker and Git must both be installed on the system and have internet access. It should be configured in such a way that it is accessible through a fixed IP address for ease of use and to ensure link with QField.
 
 
 
@@ -58,58 +58,19 @@ The installation process involves these steps:
 
 5. [Create QGIS project.](Create-QGIS-project) 
 
-6. [Create Qfieldcloud account.](Qfield-cloud)
+6. [Create QFieldCloud account.](QFieldCloud)
 
-7. [Install Qfield on your mobile device.](Qfield)
+7. [Install QField on your mobile device.](QField)
 
-8. [Link QfiledCloud and the DB.](Link-Qfield-cloud-and-database)
+8. [Link QFieldCloud and the DB.](Link-QFieldCloud-and-database)
 
 
 
 ### PosgreSQL
 
-We use docker to install PostgreSQL / Postgis. It can be install in a local machine or and a remote server.
+We use Docker to install PostgreSQL / PostGIS. It can be installed on a local machine or remote server.
 
-Installation steps :
-
-1. Move into the TempAqua folder
-   
-   `cd TempAqua`
-
-2. Copy the `.env_template` into `.env` and add with a text editor the *POSTGRES_USER* and *POSTGRES_PASSWORD*
-
-3. Run the docker-compose
-   
-   `docker-compose up -d`
-
-`docker run -d -p 5432:5432 --name postgis postgis/postgis`
-
-Upon completion of the prvious tasks, you will have the ability to connect to the PostgreSQL database utilizing your preferred database administration tool. Sample dataset is loaded during this intallation process.
-
-DB acces and crendentials :
-
-- Address : localhost or the name/IP of the machine you install PsotgeSQL in.
-
-- DB name : tempaqua
-
-- Schema : tempaqua_sample
-
-- DB Admin User : the one define in the .env file
-
-- DB Admin password: the one define in the .env file
-
-
-
-**SSL certificates**
-
-Installing SSL certificates on websites is important for ensuring secure transmission of data by encrypting the data transmitted between the user's web browser and the website. It also helps to build trust and credibility with users by verifying the website's identity and ensuring that the connection is secure.
-
-Installation steps :
-
-1. Download and install OpenSSL.
-
-2. Go to the folder `./cert`
-
+You can deploy the dockerised PostgreSQL from the related project [TempAqua_DB](https://github.com/EPFL-ENAC/TempAqua_DB)
 
 
 ### QGIS
@@ -125,7 +86,7 @@ Installation steps :
 
 Installation steps :
 
-1. Clone the repository.`git clone https://github.com/TempAqua/TempAqua_App.git`
+1. Clone the repository: `git clone https://github.com/TempAqua/TempAqua_App.git`
 
 
 
@@ -139,20 +100,26 @@ Installation steps :
 
 Run python scripts within QGIS to set up table and Qgis project.
 
+#### Add required python libraries
+   - Open OSGeo4W shell (packed with QGIS in the start menu)
+   - Use Python’s pip to install the libraries:
+     - `pip install -U python-dotenv`
+   - Re-launch QGIS
 
 
-## Qfield cloud
+## QFieldCloud
 
 To do
 
 ##
 
-## Qfield
+## QField
 
 Install the app on your mobile. Installation guide [here](https://docs.qfield.org/get-started).  
 
 ## 
 
-### Link Qfield cloud and database
+### Link QFieldCloud and database
 
 ![ ](doc\static\qfield-sync_install.png)
+
