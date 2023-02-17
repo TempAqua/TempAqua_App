@@ -16,7 +16,7 @@ The App also syncs previoulsy exported surveys, so that all  users with access t
 
 # Applicative architecture
 
-![ ](doc\static\applicative_architecture.png)
+![tt](doc/static/applicative_architecture.png)
 
 The system is composed with the following elements : 
 
@@ -38,40 +38,37 @@ The system is composed with the following elements :
 
 The following are the steps to install and utilize the TempAqua app, using a sample project as an example. After completing the installation process, users will have the capability to create their own data collection tool.
 
-## Requirement
-
-Docker and Git must both be installed on the system and have internet access. It should be configured in such a way that it is accessible through a fixed IP address for ease of use and to ensure link with QField.
-
-
-
-# Steps
+**Steps**
 
 The installation process involves these steps:
 
-1. [Install the PostgreSQL DB.](PostgreSQL) 
+1. [Install the PostgreSQL DB.](#PostgreSQL) 
 
-2. [Install QGIS.](QGIS)
+2. [Install QGIS.](#QGIS)
 
-3. [Clone the repository.](Get-the-code)
+3. [Get the project code](#Get-the-code)
 
-4. [Define user parameters.](Define-user-parameters) 
+4. [Define user parameters.](#Define-user-parameters) 
 
-5. [Create QGIS project.](Create-QGIS-project) 
+5. [Create the PostgreSQL table](#Create-the-PostgreSQL-table) 
 
-6. [Create QFieldCloud account.](QFieldCloud)
+6. [Create QGIS project](#Create-QGIS-project) 
 
-7. [Install QField on your mobile device.](QField)
+7. [Create QFieldCloud account](#Create-QFieldCloud-account)
 
-8. [Link QFieldCloud and the DB.](Link-QFieldCloud-and-database)
+8. [Install QField on your mobile device.](#Install-QField-on-your-mobile-device)
 
+9. [Link QFieldCloud and the data base](#Link_QFieldCloud_and_the_data_base)
 
+### 
 
 ### PostgreSQL
 
-We use Docker to install PostgreSQL / PostGIS. It can be installed on a local machine or remote server.
+You can use any PostgreSQL / PostGIS data base. 
 
-You can deploy the dockerised PostgreSQL from the related project [TempAqua_DB](https://github.com/EPFL-ENAC/TempAqua_DB)
+**⚠️ Requirement : the data base must me accessed from the internet  (should be configured in such a way that it is accessible through a fixed IP address).**
 
+If you don't have already a PostgreSQL / PostGIS data base. You can  deploy the dockerised PostgreSQL from the related project [TempAqua_DB](https://github.com/EPFL-ENAC/TempAqua_DB).
 
 ### QGIS
 
@@ -79,47 +76,94 @@ You can deploy the dockerised PostgreSQL from the related project [TempAqua_DB](
 
 2. In QGIS, open the plugin library and search for **qfield sync**. Select
    the plugin in the list and click on **Install**.
+   ![   ](doc/static/qfield-sync_install.png)
 
 3. Add required python libraries
+   
    - Open `OSGeo4W shell` (packed with QGIS in the start menu)
    - Use Python’s pip to install the libraries:
      - `pip install -U python-dotenv`
-   - Re-launch QGIS
+   - Re-launch QGIS 
+
+### 
+
+### Get the Code
+
+Option 1 : With git
+
+    **⚠️ Requirement : git must be installed on your computer**
+
+    Clone the repository: 
+
+    `git clone https://github.com/TempAqua/TempAqua_App.git`
+
+Option 2 : Download the zip file 
+
+    Download [this file](https://github.com/TempAqua/TempAqua_App/archive/refs/heads/main.zip) and unzip it on you locla mchaine. 
 
 
-
-## Get the Code
-
-Installation steps :
-
-1. Clone the repository: `git clone https://github.com/TempAqua/TempAqua_App.git`
 
 ### Define user parameters
 
-(DB credentials + naming) in `.env` file.
+In this stage, you will establish the parameters for your project. This is a crucial step because the parameters you input will be utilized to generate the data table in the database, as well as the corresponding Qgis project.
 
-### Create PostGIS schema, table, role and import sample data
-1. In QGIS, open the `./empty.qgs` project.
-2. Go to `Project Home` and run create_schema_and_user.py
+Steps :
+
+1. Copy and paste the file `.env_template` into `.env`
+
+2. Open the file `.env` with a text editor (eg. notepad++)
+
+3. Edit the values for the following paramters : 
+
+| Parameter name    | Description                                                                     | Example             |
+| ----------------- | -------------------------------------------------------------------------------- | ------------------- |
+| POSTGRES_HOST     | Host of the data base.                                                           | tempaqua.epfl.ch    |
+| POSTGRES_PORT     | Port of the data base.                                                           | 5432                |
+| POSTGRES_SSLMODE  | Sslmode of the data base.                                                        | ? Usefull here ???? |
+| POSTGRES_DB       | Name of the data base                                                            | ? Usefull here ???? |
+| POSTGRES_USER     | Admin user name of the data base. Used for the creation of the data base.        | super_admin         |
+| POSTGRES_PASSWORD | Admin user password  of the data   base. Used for the creation of the data base. | dfgdfhgdfh          |
+| TEMPAQUA_DB       | Name of the data base that will store the project                                | tempaqua            |
+| TEMPAQUA_SCHEMA   | Name of the schema that will store the project                                   | tempaqua            |
+| TEMPAQUA_USER     | User name for the project. Used for the data collection                          | tempaqua_user       |
+| TEMPAQUA_PASSWORD | User password  for the project.   Used for the data collection                   | dglkjhdfkl44        |
+| DUMP_LOCATION     | Location of the database dump                                                    | ? Usefull here ???? |
+| SSL_CERT_KEY      | Key of the data base.                                                            | ? Usefull here ???? |
+| SSL_CERT_CRT      | Crt of the data base.                                                            | ? Usefull here ???? |
+
+### Create the PostgreSQL table
+
+In this stage, you will create the table in the database and load sample data. 
+
+Steps : 
+
+1. From the project root folder, open the Qgis project `empty.qgz`.
+
+2. In the browser, Go to `Project Home` and run `create_schema_and_user.py`
+	![   ](doc/static/run_code.png)
 
 ### Create QGIS project
 
-1. Go to `Project Home` and run setup_proj.py
-2. Open the project `./qfield/tempaqua_sample_project.qgs`
+Having completed the previous step of creating and loading the table, we are now able to proceed with the creation of the Qgis project.
 
-## QFieldCloud
+Step :
+
+1. From the project root folder, open the Qgis project `empty.qgz`.
+
+2. In the browser, Go to `Project Home` and run `run setup_proj.py`
+
+3. Open the project `./qfield/tempaqua_sample_project.qgs`
+
+### Create QFieldCloud account
 
 To do
 
-##
+ 
 
-## QField
+### Install QField on your mobile device
 
-Install the app on your mobile. Installation guide [here](https://docs.qfield.org/get-started).  
+To install, please follow [this link](https://docs.qfield.org/get-started/).
 
-## 
+### Link QFieldCloud and the data base
 
-### Link QFieldCloud and database
-
-![ ](doc\static\qfield-sync_install.png)
-
+Todo
