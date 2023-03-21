@@ -48,20 +48,11 @@ The installation process involves these steps:
 
 ### QGIS
 
-1. Download and Install the latest version from the [official web page](https://www.qgis.org/en/site/forusers/download.html).
+1. Download and Install the latest version (>= 3.30) from the [official web page](https://www.qgis.org/en/site/forusers/download.html).
 
 2. In QGIS, open the plugin library and search for **qfield sync**. Select
    the plugin in the list and click on **Install**.
    ![   ](doc/static/qfield-sync_install.png)
-
-3. Add required python libraries
-   
-   - Open `OSGeo4W shell` (packed with QGIS in the start menu)
-   - Use Python’s pip to install the libraries:
-     - `pip install -U python-dotenv`
-   - Re-launch QGIS 
-
-### 
 
 ### Get the Code
 
@@ -87,6 +78,22 @@ To do
 
 To install, please follow [this link](https://docs.qfield.org/get-started/).
 
-### Link QFieldCloud and the data base
+### Deploy QGIS project on QFieldCloud
 
-Todo
+1. Open the project:
+    - In QGIS > Browser > GeoPackage
+    - Right click > New Connection ... > open `.../TempAqua_App/qgis/TempAqua.gpkg`
+    - In `TempAqua.gpkg` > Double click `TempAqua` to open the project
+2. Convert the project to QField project:
+    - In QGIS > Browser > QFieldCloud > My projects
+    - Right click > Create new project
+    - Convert currently open project to cloud project (recommended)
+3. Fix cloud settings in project:
+    - In QGIS > Layers > segments
+    - Right click > Properties
+    - In QField tab > change Cloud layer action to `Directly access data source`
+4. Push changes to cloud:
+    - Save project
+    - Menu `Plugins` > `QFieldSync` > `Synchronize Current Cloud Project`
+
+
