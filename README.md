@@ -44,7 +44,7 @@ The installation process involves these steps:
 
 5. [Deploy QGIS project on QFieldCloud](#5-deploy-qgis-project-on-qfieldcloud)
 
-6. [Push changes to QFieldCloud](#6-Push-changes-to-QFieldCloud)
+
 
 ### 
 
