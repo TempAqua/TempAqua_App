@@ -34,17 +34,17 @@ The following are the steps to install and utilize the TempAqua app, using a sam
 
 The installation process involves these steps:
 
-1. [Install QGIS.](#1.-QGIS)
+1. [Install QGIS.](#1-QGIS)
 
-2. [Get the project code](#2.-Get-the-code)
+2. [Get the project code](#2-Get-the-code)
 
-3. [Create QFieldCloud account](#3.-Create-QFieldCloud-account)
+3. [Create QFieldCloud account](#3-Create-QFieldCloud-account)
 
-4. [Install QField on your mobile device.](#4.-Install-QField-on-your-mobile-device)
+4. [Install QField on your mobile device.](#4-Install-QField-on-your-mobile-device)
 
-5. [Link QFieldCloud and the data base](#5.-Link_QFieldCloud_and_the_data_base)
+5. [Link QFieldCloud and the data base](#5-Link_QFieldCloud_and_the_data_base)
 
-6. [Push changes to QFieldCloud](#6.-Push-changes-to-QFieldCloud)
+6. [Push changes to QFieldCloud](#6-Push-changes-to-QFieldCloud)
 
 ### 
 
