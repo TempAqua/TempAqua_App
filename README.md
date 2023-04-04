@@ -42,7 +42,7 @@ The installation process involves these steps:
 
 4. [Install QField on your mobile device.](#4-Install-QField-on-your-mobile-device)
 
-5. [Link QFieldCloud and the data base](#5-Link_QFieldCloud_and_the_data_base)
+5. [Deploy QGIS project on QFieldCloud](#5-deploy-qgis-project-on-qfieldcloud)
 
 6. [Push changes to QFieldCloud](#6-Push-changes-to-QFieldCloud)
 
