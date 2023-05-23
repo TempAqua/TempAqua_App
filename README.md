@@ -151,8 +151,9 @@ To run a script without logs
 To run a script with a log:
 
 1. Right-click on the script.
-2. Select "Run 'Edit Script'".
+2. Select "Edit Script...".
 3. In the code window, click on the green arrow in the menu bar above.
+4. Click "Run" on the new window that appears.
 
 ### tempAqua_archiving.py
 
