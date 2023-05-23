@@ -20,11 +20,13 @@ from qgis.core import (
     QgsWkbTypes,
 )
 
+from qgis.PyQt.QtWidgets import QMessageBox
+
 ARCHIVE_SUFFIX = "_archive"
 PK_NAME = "fid"
 DIFFERENCE_FIELD = "difference"
 TIMESTAMP_FIELD = "timestamp_archive"
-
+USER_FIELD = "user"
 
 class TempAquaArchiving(QgsProcessingAlgorithm):
     """
@@ -59,7 +61,7 @@ class TempAquaArchiving(QgsProcessingAlgorithm):
         should be localised.
         """
         return self.tr(
-            f"Archive changed features from normal layers to *{ARCHIVE_SUFFIX} layers"
+            f"TempAqua"
         )
 
     def groupId(self):
@@ -129,7 +131,7 @@ class TempAquaArchiving(QgsProcessingAlgorithm):
             element in list_of_layers for element in list_of_expected_current_layers
         ):
             raise QgsProcessingException(
-                f"Qgis project should contain at least these layers {list_of_expected_current_layers}, cirrent list of layer {list_of_layers}"
+                f"Qgis project should contain at least these layers {list_of_expected_current_layers}, current list of layer {list_of_layers}"
             )
 
         feedback.setProgressText("QGIS project is valid")
@@ -198,7 +200,7 @@ class TempAquaArchiving(QgsProcessingAlgorithm):
         cursor = connection.cursor()
         for data in list_data:
             field_name = [i for i in data.keys()]
-            ",".join(field_name)
+            field_name_str = ",".join(field_name)
             field_values = [str(i) for i in data.values()]
             field_values = [None if item == "NULL" else item for item in field_values]
             if "geom" in field_name:
@@ -301,7 +303,7 @@ class TempAquaArchiving(QgsProcessingAlgorithm):
 
             # Add timestamp
             feat_to_insert[TIMESTAMP_FIELD] = datetime.now().strftime(
-                "%d/%d/%Y %H:%M:%S"
+                "%d/%m/%Y %H:%M:%S"
             )
 
             # New feature
@@ -322,7 +324,7 @@ class TempAquaArchiving(QgsProcessingAlgorithm):
                 diff = self.compare_dicts(
                     dict1=feat_recent_archive_existing,
                     dict2=feat_to_insert,
-                    blacklist_keys=[PK_NAME, TIMESTAMP_FIELD],
+                    blacklist_keys=[PK_NAME, TIMESTAMP_FIELD,USER_FIELD,DIFFERENCE_FIELD],
                 )
 
                 # No change on the feature
@@ -342,6 +344,9 @@ class TempAquaArchiving(QgsProcessingAlgorithm):
         """
         Run the algorithm.
         """
+
+        msg_box = QMessageBox()
+        msg_box.setText("This is a message.")
 
         # check project conformity
         self.validate_project(feedback)
