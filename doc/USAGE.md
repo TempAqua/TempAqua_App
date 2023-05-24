@@ -1,17 +1,63 @@
-# Usage
+
+> [Main page](../README.md)
+
+# User guide
+
+## Deploy QGIS project on QFieldCloud
+
+These few steps should only be performed once during the project initialization process.
+
+1. Create an emplty folder where you want to store the project
+
+2. Start QGIS (an empty project)
+
+3. From QGIS, open the template project as follow : 
+   
+   - In QGIS > Browser > GeoPackage
+     ![   ](doc/static/deploy_step3.png)
+   
+   - Right click > New Connection ... > open `.../TempAqua_App/qgis/TempAqua.gpkg`
+   
+   - In `TempAqua.gpkg` > Double click `TempAqua` to open the project
+     
+     Loading the TempAqua template project provides access to fictitious data that can be edited as desired.
+
+4. Convert the project to QField project:
+   
+   - In QGIS > Browser > QFieldCloud > My projects
+   - Right click > Create new project
+     ![   ](doc/static/deploy_step4.png)
+   - Convert currently open project to cloud project (recommended)
+   - Click next and fill the required information
+   - Chose you local folder
+   - Close QGIS
+
+5. Fix cloud settings in project:
+   
+   - Open the newly created QGIS project
+   - In Layers planel > Right click on the segments layer > Properties 
+        ![   ](doc/static/deploy_step5.png)
+   - In QField tab > change Cloud layer action to `Directly access data source`
+
+6. Push changes to QFieldCloud:
+   
+   - Save project
+   - Menu `Plugins` > `QFieldSync` > `Synchronize Current Cloud Project`
+
+
+
+
+
+
+
 ## Processing scripts
 
-### Script installation
+We developed a set of scripts to automate the data collection process. These scripts are located in the `/qgis/` folder. The following sections describe how to use these scripts.
 
-To install:
+Installation process can be found [here](INSTALLATION.md).
 
-1. In QGIS, go to Processing > Toolbox.
-2. On the second icon from the left, select “Add a script to Toolbox…”.
-3. Navigate to the `/qgis/` folder and select the script.
+### Script execution
 
-The script will appear at the bottom of the window.
-
-### Script execusion
 
 To run a script without logs
 

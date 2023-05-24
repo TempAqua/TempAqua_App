@@ -5,6 +5,8 @@ Data and code related to the ENAC-IT4R OS Grant proposal, period Nov 2022 - Jun 
 
 # Introduction
 
+![   ](doc/static/TempAqua-1024x576.jpg)
+
 The TempAqua App allows for detailed mapping of temporal streams  and other ecohydrological features, as well as for documenting physical variables and soft data. 
 
 The  application is configurable; users can import their maps and data, e.g., pre-defined observation  locations, landscape features such as stream networks and catchments boundaries. 
@@ -21,7 +23,12 @@ The App also syncs previoulsy exported surveys, so that all  users with access t
 
 * [Installation](doc/INSTALLATION.md)
 * [Applicative architecture](doc/ARCHI.md)
-* [Usage](doc/USAGE.md)
+* [User guide](doc/USAGE.md)
 * [Contributing](CONTRIBUTING.md)
 * [License](LICENSE)
 * [Code of conduct](CODE_OF_CONDUCT.md)
+
+
+# Authors
+* Izabela Bujak, ECHO 
+* Dr Jana von Freyberg, ECHO
