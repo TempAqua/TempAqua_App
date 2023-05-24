@@ -1,8 +1,8 @@
-> [Main page](../README.md)
+> [Main page](README.md)
 
 # TempAqua Contributing Guide
 
-Hi! Thanks for taking the time to contribute to {YOUR-REPO-NAME}.
+Hi! Thanks for taking the time to contribute to TempAqua.
 
 _You can contribute in many ways_
 
@@ -13,8 +13,6 @@ _Before submitting your contribution, please make sure to take a moment and read
 - [Code of Conduct](https://github.com/TempAqua/TempAqua_App/blob/main/CODE_OF_CONDUCT.md)
 - [Issue Reporting Guidelines](#issue-reporting-guidelines)
 - [Pull Request Guidelines](#pull-request-guidelines)
-- [Development Setup](#development-setup)
-- [Project Structure](#project-structure)
 - [Github Flow](#github-flow)
 
 ## Issue Reporting Guidelines
