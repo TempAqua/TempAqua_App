@@ -1,10 +1,6 @@
-# TempAqua_App
+# TempAqua Mobile Application
 
-Data and code related to the ENAC-IT4R OS Grant proposal, period Nov 2022 - Jun 2023
-
-
-* Placeholder for Table of Content (Must not be removed) <newline> {:toc}
-
+Data and code related to the ENAC-IT4R OS Grant proposal, period Nov 2022 - Jun 2023.
 
 
 # Introduction
@@ -19,52 +15,13 @@ The App automatically connects stream sections, color codes them depending on  t
 
 The App also syncs previoulsy exported surveys, so that all  users with access to the same database can immediately retrieve information about previous  surveys, which assures consistency in data collection when several researchers collect data for  the same project in the same region.
 
-# Applicative architecture
-
-![tt](doc/static/applicative_architecture.png)
-
-The system is composed with the following elements : 
-
-* **QGIS** : open-source desktop geographic information system (GIS) software.
-
-* **QField**  : open-source mobile GIS application for Android and Iphone. It is designed to work with QGIS. QField allows users to take their QGIS projects into the field, collecting and editing data.
-
-* **QFieldCloud** : a service that allows users to synchronize and share their QGIS projects and data with QField,
 
 
-[Installation](doc/INSTALLATION.md)
+# Table of contents
 
-
-
-# Usage
-## Processing scripts
-
-### Script installation
-
-To install:
-
-1. In QGIS, go to Processing > Toolbox.
-2. On the second icon from the left, select “Add a script to Toolbox…”.
-3. Navigate to the `/qgis/` folder and select the script.
-
-The script will appear at the bottom of the window.
-
-### Script execusion
-
-To run a script without logs
-
-1. double click on the script 
-
-To run a script with a log:
-
-1. Right-click on the script.
-2. Select "Edit Script...".
-3. In the code window, click on the green arrow in the menu bar above.
-4. Click "Run" on the new window that appears.
-
-### tempAqua_archiving.py
-
-This script performs the following actions:
-
-- It validates the project by ensuring that it contains at least four layers, with at least two layers ending with '_archive', and at least two layers with names containing "media".
-- It transfers new or modified features from the normal table to the archived counterpart.
+* [Installation](doc/INSTALLATION.md)
+* [Applicative architecture](doc/ARCHI.md)
+* [Usage](doc/USAGE.md)
+* [Contributing](doc/CONTRIBUTING.md)
+* [License](LICENSE.md)
+* [Code of conduct](CODE_OF_CONDUCT.md)
