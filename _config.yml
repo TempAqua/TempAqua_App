@@ -8,3 +8,8 @@ relative_links:
 include:
   - README.md
   - doc/INSTALLATION.md
+  - doc/ARCHI.md
+  - doc/USAGE.md
+  - CONTRIBUTING.md
+  - LICENSE.md
+  - CODE_OF_CONDUCT.m

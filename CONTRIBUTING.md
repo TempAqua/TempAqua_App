@@ -4,21 +4,20 @@ Hi! Thanks for taking the time to contribute to {YOUR-REPO-NAME}.
 
 _You can contribute in many ways_
 
-- Join the [discussion](https://github.com/EPFL-ENAC/{YOUR-REPO-NAME}/discussions)
+- Join the [discussion](https://github.com/TempAqua/TempAqua_App/discussions)
 
 _Before submitting your contribution, please make sure to take a moment and read through the following guidelines_
 
-- [Code of Conduct](https://github.com/EPFL-ENAC/{YOUR-REPO-NAME}/blob/main/CODE_OF_CONDUCT.md)
+- [Code of Conduct](https://github.com/TempAqua/TempAqua_App/blob/main/CODE_OF_CONDUCT.md)
 - [Issue Reporting Guidelines](#issue-reporting-guidelines)
 - [Pull Request Guidelines](#pull-request-guidelines)
 - [Development Setup](#development-setup)
 - [Project Structure](#project-structure)
 - [Github Flow](#github-flow)
-- [Commit Lint](#commit-lint)
 
 ## Issue Reporting Guidelines
 
-- Always use [ issue templates ](https://github.com/EPFL-ENAC/{YOUR-REPO-NAME}/issues/new/choose)
+- Always use [ issue templates ](https://github.com/TempAqua/TempAqua_App/issues/new/choose)
 - If you don't find a corresponding issue template please use the template to ask a new template
 
 ## Pull Request Guidelines
@@ -53,67 +52,12 @@ We use github to host code, to track issues and feature requests, as well as acc
 - It's better to create a branch from an issue, the issue number will directly be in the branch name
   - see [discussion for reference](https://github.com/github-community/community/discussions/12290)
 
-### Before you start
-
-1. Setup your environment to have immediate feedback on your changes:
-
-   - [Setup ESLint plugin](https://eslint.org/docs/user-guide/integrations) in your editor.
-   - [Setup Prettier plugin](https://prettier.io/docs/en/editors.html) in your editor.
-   - [Setup TypeScript](https://www.typescriptlang.org/index.html#download-links) or Flow in your editor.
-   - [Setup stylelint](https://stylelint.io/user-guide/complementary-tools#editor-plugins) in your editor.
-
-2. Read your team’s coding standards and style guides.
-
-## JavaScript
-
-- JavaScript code is following team standards.
-
-## HTML
-
-- All code is [WCAG Level AA](https://www.w3.org/TR/2006/WD-WCAG20-20060427/appendixB.html) compliant.
-  - _See [tools and techniques to use to test accessibility](https://daverupert.com/2018/07/assistive-technologies-i-test-with/)._
-- Semantic tags are used where possible instead of `div`s and `span`s (headings, paragraphs, lists, etc.)
-  - _See [Semantic HTML Tutorial](https://www.internetingishard.com/html-and-css/semantic-html/) for some examples._
-- All interactive elements (links, buttons, form elements) are keyboard accessible and have visible focus states.
-- Tab order of all interactive elements follows a logical pattern, usually their position on the screen and order in the DOM.
-- All non-standard elements have appropriate ARIA roles.
-- All interactive elements have accessible labels.
-  - _For example, add accessible text using the VisuallyHidden component or something similar._
-- All non-text content has a text alternative.
-  - _For example, images have appropriate alt texts, clickable icons have titles, and videos have captions._
-- UI looks good on any screen size (mobile, desktop, etc.).
-- UI looks good with 200% page zoom.
-
-## CSS
-
-- CSS code is following team standards. _stylelint_
-- No hardcoded colors, font sizes, whitespace, breakpoints and z-indices.
-  - _Always use design tokens instead._
-- No style overrides of any component library components.
-- No unnecessary CSS, ideally there’s no CSS at all.
-  - _For example, prefer to use primitive and layout components instead of custom styles._
-- Try to use rem and em instead of px: here is a good recommendation
-  - Border width (px) - Relative border width is ugly.
-  - Icon size (rem) - When inline with text.
-  - Margin for typography (rem) - Case for margin between heading and paragraph.
-  - Padding for typography (em) - Case for different button size.
-  - Font size (rem) - Case for heading font size and secondary font size. (em is not recommended)
-  - Root font size (px) - It is the root! Why bother with relative units? Relative to what??
-  - Line height (rem) - Because it needs to be relative to the font size. Unless you want to set a vertical rhythm and such.
-
-## Python
-
-- We follow the pep8 and the python-guide writing style
-  - https://docs.python-guide.org/writing/style/
 
 ### maybe todo ?
 
 1. Fork the repo and create your branch from `dev`.
-2. If you've added code that should be tested, add tests.
-3. If you've changed APIs or added breaking change, update the documentation and notify the users.
-4. Ensure the test suite passes.
-5. Make sure your code lints.
-6. Issue that pull request!
+2. If you've changed APIs or added breaking change, update the documentation and notify the users.
+3. Issue that pull request!
 
 ### Recommendation for the pull request
 
@@ -157,20 +101,6 @@ We use github to host code, to track issues and feature requests, as well as acc
 - Avoid writing comment like "done" of "fixed" on each code review comment. Reviewers assume you’ll do all suggested changes, unless you have a reason not to do some of them.
 - Sometimes it’s okay to postpone changes — in this case you’ll need to add a ticket number to the pull request and to the code itself.
 
-## Development Setup
-
-You will need [Node.js](http://nodejs.org) **lts** and [npm](https://pnpm.io/). And also Gnu Make
-
-After cloning the repo, run:
-
-```bash
-$ make install # install the dependencies of the project
-```
-
-## Project Structure
-
-- **`db`**: contains the data and database bootstrap code for the db
-- **`frontend`**: contains the source code. The codebase is written in typescript using class components for vue2 and vuetify as the library component. And ECharts as the chart library.
 
 ## Financial Contribution
 
@@ -182,4 +112,4 @@ We follow a commit message convention, to have consistent git messages. The goal
 
 ## Credits
 
-Thank you to all the people who have already contributed to {YOUR-REPO-NAME} repository!
+Thank you to all the people who have already contributed to TempAqua repository!
