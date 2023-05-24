@@ -23,5 +23,5 @@ The App also syncs previoulsy exported surveys, so that all  users with access t
 * [Applicative architecture](doc/ARCHI.md)
 * [Usage](doc/USAGE.md)
 * [Contributing](CONTRIBUTING.md)
-* [License](LICENSE.md)
+* [License](LICENSE)
 * [Code of conduct](CODE_OF_CONDUCT.md)

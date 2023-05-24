@@ -11,5 +11,5 @@ include:
   - doc/ARCHI.md
   - doc/USAGE.md
   - CONTRIBUTING.md
-  - LICENSE.md
+  - LICENSE
   - CODE_OF_CONDUCT.md

@@ -1,3 +1,4 @@
+> [Main page](../README.md)
 # Installation
 
 The following are the steps to install and utilize the TempAqua app, using a sample project as an example. After completing the installation process, users will have the capability to create their own data collection tool.
