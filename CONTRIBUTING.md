@@ -1,4 +1,6 @@
-# {YOUR-REPO-NAME} Contributing Guide
+> [Main page](../README.md)
+
+# TempAqua Contributing Guide
 
 Hi! Thanks for taking the time to contribute to {YOUR-REPO-NAME}.
 
