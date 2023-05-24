@@ -56,7 +56,15 @@ We developed a set of scripts to automate the data collection process. These scr
 
 Installation process can be found [here](INSTALLATION.md).
 
-### Script execution
+
+### TempAqua_archiving.py
+
+This script performs the following actions:
+
+- It validates the project by ensuring that it contains at least four layers, with at least two layers ending with '_archive', and at least two layers with names containing "media".
+- It transfers new or modified features from the normal table to the archived counterpart.
+
+![tt](static/tempAqua_archiving.png)
 
 
 To run a script without logs
@@ -70,9 +78,6 @@ To run a script with a log:
 3. In the code window, click on the green arrow in the menu bar above.
 4. Click "Run" on the new window that appears.
 
-### tempAqua_archiving.py
 
-This script performs the following actions:
 
-- It validates the project by ensuring that it contains at least four layers, with at least two layers ending with '_archive', and at least two layers with names containing "media".
-- It transfers new or modified features from the normal table to the archived counterpart.
+
