@@ -2,9 +2,16 @@ show_downloads: true
 theme: jekyll-theme-cayman
 plugins:
   - jekyll-relative-links
+  - jekyll-toc
 relative_links:
   enabled: true
   collections: true
 include:
   - README.md
   - doc/INSTALLATION.md
+toc:
+ min_level: 1
+ max_level: 3
+ list_class: toc
+ list_class: toc__list
+ sublist_class: toc__sublist
