@@ -18,6 +18,10 @@ from qgis.core import (
     QgsProcessingAlgorithm,
     QgsProject,
     QgsWkbTypes,
+    QgsProcessingParameterFeatureSource,
+    QgsProcessingParameterString,
+    QgsProcessingParameterDefinition,
+    QgsProcessing,
 )
 
 from qgis.PyQt.QtWidgets import QMessageBox
@@ -27,11 +31,16 @@ PK_NAME = "fid"
 DIFFERENCE_FIELD = "difference"
 TIMESTAMP_FIELD = "timestamp_archive"
 USER_FIELD = "user"
+INFO_FIELD = "info_archive"
 
 class TempAquaArchiving(QgsProcessingAlgorithm):
     """
     This script implements a QGIS Processing algorithm for archiving changed features
     """
+
+    INPUT = 'INPUT'
+    OUTPUT = 'OUTPUT'
+    INFO_TEXT = 'INFO_TEXT'
 
     def tr(self, string):
         """
@@ -84,7 +93,30 @@ class TempAquaArchiving(QgsProcessingAlgorithm):
         return self.tr(description)
 
     def initAlgorithm(self, config=None):
-        pass
+        
+        self.addParameter(
+            QgsProcessingParameterFeatureSource(
+                self.INPUT,
+                self.tr('Input layer'),
+                [QgsProcessing.TypeVectorAnyGeometry]
+            )
+        )
+        
+        self.addParameter(
+            QgsProcessingParameterFeatureSource(
+                self.OUTPUT,
+                self.tr('Output layer (archive)'),
+                [QgsProcessing.TypeVectorAnyGeometry]
+            )
+        )
+        
+        
+        self.addParameter(QgsProcessingParameterString(
+            self.INFO_TEXT,
+            'Survey info :',
+            defaultValue= None,
+            optional=True        
+        ))
 
     def get_layer_list(self):
         """
@@ -98,6 +130,8 @@ class TempAquaArchiving(QgsProcessingAlgorithm):
         layer_list = [layer.name() for layer in layers.values()]
 
         return layer_list
+
+
 
     def validate_project(self, feedback):
         """
@@ -136,6 +170,34 @@ class TempAquaArchiving(QgsProcessingAlgorithm):
 
         feedback.setProgressText("QGIS project is valid")
 
+    def validate_io(self, input , output  ,feedback): 
+        
+        # Check input layer is geopackage
+        storage_type = input.dataProvider().storageType()
+        if storage_type != "GPKG" :
+            feedback.reportError(f'The input layer must be in Geopackage format. Currently {storage_type}')
+            
+        # Check output layer is geopackage
+        storage_type = output.dataProvider().storageType()
+        if storage_type != "GPKG" :
+            feedback.reportError(f'The output layer must be in Geopackage format. Currently {storage_type}')
+    
+
+        # Check that the input and output layer name are not identical
+        if input.name() == output.name():
+            feedback.reportError('Input and output layer names cannot be identical.')
+            
+        
+        # Check that the schema of input should be found insinde the output
+        input_fields = [field.name() for field in input.fields()]
+        output_fields = [field.name() for field in output.fields()]
+        missing_field = [field for field in input_fields if field not in output_fields ]
+        if missing_field :
+           feedback.reportError(f'Fields {missing_field} from {input.name()} has not been found in {output.name()}') 
+
+               
+        
+    
     def infer_layers_pairs(self, list_of_layers_name: list) -> list:
         """Infer layers pairs from list of layers name
 
@@ -263,7 +325,7 @@ class TempAquaArchiving(QgsProcessingAlgorithm):
         return differences
 
     def transfer_missing_features(
-        self, in_layer: str, out_layer: str, feedback
+        self, layer_in: str, layer_out: str, feedback,parameters
     ) -> None:
         """Transfer missing features from in_layer to out_layer.
 
@@ -274,15 +336,13 @@ class TempAquaArchiving(QgsProcessingAlgorithm):
         out_layer : str
             Output layer name
         """
-
-        # Get data from layers
-        project = QgsProject.instance()
-        layer_in = project.mapLayersByName(in_layer)[0]
-        layer_out = project.mapLayersByName(out_layer)[0]
+        
+        
 
         feedback.setProgressText(f"Layer in : {layer_in.name()}")
         feedback.setProgressText(f"Layer out : {layer_out.name()}")
-
+        
+        
         # Qgis feature to list of dict
         feat_in_list_dict = self.features2dict(layer_in)
         feat_out_list_dict = self.features2dict(layer_out)
@@ -291,6 +351,7 @@ class TempAquaArchiving(QgsProcessingAlgorithm):
         ]
 
         list_feat_to_insert = list()
+        
 
         for feat_in in feat_in_list_dict:
             feat_in_pk = feat_in.get(PK_NAME)
@@ -305,6 +366,12 @@ class TempAquaArchiving(QgsProcessingAlgorithm):
             feat_to_insert[TIMESTAMP_FIELD] = datetime.now().strftime(
                 "%d/%m/%Y %H:%M:%S"
             )
+
+            #Add info field
+            info_text = parameters[self.INFO_TEXT] 
+            if info_text:
+                feat_to_insert[INFO_FIELD] = info_text
+
 
             # New feature
             if feat_in_pk not in feat_out_list_pk:
@@ -324,7 +391,7 @@ class TempAquaArchiving(QgsProcessingAlgorithm):
                 diff = self.compare_dicts(
                     dict1=feat_recent_archive_existing,
                     dict2=feat_to_insert,
-                    blacklist_keys=[PK_NAME, TIMESTAMP_FIELD,USER_FIELD,DIFFERENCE_FIELD],
+                    blacklist_keys=[PK_NAME, TIMESTAMP_FIELD,USER_FIELD,DIFFERENCE_FIELD,INFO_FIELD],
                 )
 
                 # No change on the feature
@@ -339,24 +406,45 @@ class TempAquaArchiving(QgsProcessingAlgorithm):
         # Save the changes into the geopackage
         if list_feat_to_insert:
             self.insert_feature(layer_out, list_feat_to_insert, feedback)
+            
+            
+    
 
     def processAlgorithm(self, parameters, context, feedback):
         """
         Run the algorithm.
         """
 
-        msg_box = QMessageBox()
-        msg_box.setText("This is a message.")
+            
+        
+        input = self.parameterAsSource(
+            parameters,
+            self.INPUT,
+            context
+        )
+        output = self.parameterAsSource(
+            parameters,
+            self.OUTPUT,
+            context
+        )
+        
+        layer_in_name = input.sourceName()
+        layer_out_name = output.sourceName()
+        
+        project = QgsProject.instance()
+       
+   
+        layer_in = project.mapLayersByName(layer_in_name)[0]
+        layer_out = project.mapLayersByName(layer_out_name)[0]
+      
 
-        # check project conformity
-        self.validate_project(feedback)
+        
+        self.validate_io(input = layer_in, 
+            output = layer_out,
+            feedback=feedback )
 
-        # Get project layers
-        list_of_layers = self.get_layer_list()
-        pair_of_layer = self.infer_layers_pairs(list_of_layers)
 
         # Run processing
-        for current_layer, archive_layer in pair_of_layer:
-            self.transfer_missing_features(current_layer, archive_layer, feedback)
+        self.transfer_missing_features(layer_in, layer_out, feedback,parameters)
 
         return {}

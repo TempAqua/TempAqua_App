@@ -1,0 +1,15 @@
+show_downloads: true
+theme: jekyll-theme-cayman
+plugins:
+  - jekyll-relative-links
+relative_links:
+  enabled: true
+  collections: true
+include:
+  - README.md
+  - doc/INSTALLATION.md
+  - doc/ARCHI.md
+  - doc/USAGE.md
+  - CONTRIBUTING.md
+  - LICENSE
+  - CODE_OF_CONDUCT.md
