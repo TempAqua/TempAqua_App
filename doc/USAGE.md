@@ -6,17 +6,39 @@
 This page give information on how to use the TempAqua application.
 
 
+## Project content
+
+The TempAqua QGIS projects and layers are included into the `/qgis/TempAqua.gpkg` geopackage. 
+
+![tt](static/qgis_gpk.png)
+
+
+
+Two QGIS projects are available:
+*  ![tt](static/qgis_small.png) TempAqua_manager : This the project to gather data from field collection, it contains archived tables.
+
+* ![tt](static/qgis_small.png) TempAqua_Qfield : This is the project to be used to set up mobile surveys. It contains the same layers as the TempAqua_manager project, but without the archived tables. It is also configured to be used with QFieldCloud.
+
+
+
 
 ## How to work with TempAqua ? 
 
 
 The standard process for working with TempAqua is as follows: 
 
+1. [Step 0 : Initialize the QGIS project for the survey](#Step-0-:-Initialize-the-QGIS-project-for-the-survey)
+
+
+Schema of these steps :
+
+
+
 ![tt](static/process.png)
 
 
 
-## Publish the survey (QGIS project) on QFieldCloud
+## Step 0 : Initialize the QGIS project for the survey
 
 ### Initial publication
 
@@ -31,7 +53,7 @@ The standard process for working with TempAqua is as follows:
    - In QGIS > Browser > GeoPackage
      ![   ](static/deploy_step3.png)
    
-   - Right click > New Connection ... > open `.../TempAqua_App/qgis/TempAqua.gpkg`
+   - Right click > New Connection ... > open `.../TempAqua_App/qgis/TempAqua_Qfield.gpkg`
    
    - In `TempAqua.gpkg` > Double click `TempAqua` to open the project
      
@@ -62,7 +84,27 @@ The standard process for working with TempAqua is as follows:
 
 
 
-### Update a existing QGIS project and data on QFieldCloud
+## Step 1 : Set up the QFieldCloud project
+
+
+### Remove existing attributes
+
+> We developed a set of scripts to automate the data collection process. These scripts are located in the `/qgis/` folder. The following sections describe how to use these scripts. Installation process can be found [here](INSTALLATION.md).
+
+This `TempAqua_empty_table.py` script allows the user to empty all attributes in a table except for the primary key and geometry. This can be useful when starting a new survey and wanting to clear the table to start from scratch while maintaining the measurement positions.
+
+
+To run a script
+
+1. double click on the script. The following window will appear:
+![tt](static/tempAqua_archiving_3.png)
+2. Select the layer you want to empty.
+3. Click on `Run` button. The script will run and a log will be displayed in the window. 
+
+
+
+
+### Publish a existing QGIS project and data on QFieldCloud
 
 
 > These few steps is performed when the QGIS project has already been published on QFieldCloud and you want to update it.
@@ -78,20 +120,22 @@ The standard process for working with TempAqua is as follows:
 
 
 
-## QfieldCloud project management
+
+
+## Step 2 : QfieldCloud project management
 
 Please refer to the [official documentation](https://docs.qfield.org/get-started/tutorials/get-started-qfc/) for more information on how to manage QFieldCloud projects.
 
 
 
 
-## Qfield 
+## Step 3 : Qfield 
 
 Please refer to the [official documentation](https://docs.qfield.org/get-started/) for more information on how to manage QField projects on the mobile devices.
 
 
 
-## Get the data from QFieldCloud to QGIS
+## Step 4 : Get the data from QFieldCloud to QGIS
 
 To get the data from your field data collection, you need to download the data from QFieldCloud to QGIS. This is done as follow:
 
@@ -104,19 +148,12 @@ To get the data from your field data collection, you need to download the data f
 
 
 
+## Step 5 : Data processing / achariving
 
+### Archive the survey data
 
+> We developed a set of scripts to automate the data collection process. These scripts are located in the `/qgis/` folder. The following sections describe how to use these scripts. Installation process can be found [here](INSTALLATION.md).
 
-
-
-## Processing scripts
-
-We developed a set of scripts to automate the data collection process. These scripts are located in the `/qgis/` folder. The following sections describe how to use these scripts.
-
-Installation process can be found [here](INSTALLATION.md).
-
-
-### TempAqua_archiving.py
 
 This script performs the following actions:
 
@@ -128,26 +165,14 @@ This script performs the following actions:
 
 To run a script
 
+
+1. From the `QGIS survey project` copy the table you want to archive and paste it in the `QGIS manager project`. 
 1. double click on the script. The following window will appear:
 ![tt](static/tempAqua_archiving_2.png)
 2. Add optional information to be saved in the archived table. This information can be used to describe the survey or any changes made.
 3. Click on `Run` button. The script will run and a log will be displayed in the window. The log will indicate the number of features that have been archived.
 
 
-
-
-
-### TempAqua_empty_table.py
-
-This script allows the user to empty all attributes in a table except for the primary key and geometry. This can be useful when starting a new survey and wanting to clear the table to start from scratch while maintaining the measurement positions.
-
-
-To run a script
-
-1. double click on the script. The following window will appear:
-![tt](static/tempAqua_archiving_3.png)
-2. Select the layer you want to empty.
-3. Click on `Run` button. The script will run and a log will be displayed in the window. 
 
 
 
