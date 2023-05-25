@@ -25,10 +25,15 @@ Two QGIS projects are available:
 ## How to work with TempAqua ? 
 
 
-The standard process for working with TempAqua is as follows: 
+To conduct a TempAqua Qfield survey, follow these steps:
 
-1. [Step 0 : Initialize the QGIS project for the survey](#Step-0-:-Initialize-the-QGIS-project-for-the-survey)
 
+1. Step 0: Initialize the QGIS project for the survey.
+1. Step 1: Set up and publish the QGIS project to QFieldCloud.
+1. Step 2: Manage the QGIS project on QFieldCloud.
+1. Step 3: Collect data in the field with Qfield.
+1. Step 4: Retrieve data from QFieldCloud to the local QGIS project.
+1. Step 5: Archive the data (optional).
 
 Schema of these steps :
 
@@ -38,7 +43,7 @@ Schema of these steps :
 
 
 
-## Step 0 : Initialize the QGIS project for the survey
+## Step 0: Initialize the QGIS project for the survey.
 
 ### Initial publication
 
@@ -84,7 +89,7 @@ Schema of these steps :
 
 
 
-## Step 1 : Set up the QFieldCloud project
+## Step 1: Set up and publish the QGIS project to QFieldCloud.
 
 
 ### Remove existing attributes
@@ -122,20 +127,20 @@ To run a script
 
 
 
-## Step 2 : QfieldCloud project management
+## Step 2: Manage the QGIS project on QFieldCloud.
 
 Please refer to the [official documentation](https://docs.qfield.org/get-started/tutorials/get-started-qfc/) for more information on how to manage QFieldCloud projects.
 
 
 
 
-## Step 3 : Qfield 
+## Step 3: Collect data in the field with Qfield.
 
 Please refer to the [official documentation](https://docs.qfield.org/get-started/) for more information on how to manage QField projects on the mobile devices.
 
 
 
-## Step 4 : Get the data from QFieldCloud to QGIS
+## Step 4: Retrieve data from QFieldCloud to the local QGIS project.
 
 To get the data from your field data collection, you need to download the data from QFieldCloud to QGIS. This is done as follow:
 
@@ -148,7 +153,7 @@ To get the data from your field data collection, you need to download the data f
 
 
 
-## Step 5 : Data processing / achariving
+## Step 5: Archive the data (optional).
 
 ### Archive the survey data
 
