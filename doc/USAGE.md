@@ -160,10 +160,9 @@ To get the data from your field data collection, you need to download the data f
 > We developed a set of scripts to automate the data collection process. These scripts are located in the `/qgis/` folder. The following sections describe how to use these scripts. Installation process can be found [here](INSTALLATION.md).
 
 
-This script performs the following actions:
+This script copy the modified feature from one table to another one. 
 
-- It validates the project by ensuring that it contains at least four layers, with at least two layers ending with '_archive', and at least two layers with names containing "media".
-- It transfers new or modified features from the normal table to the archived counterpart.
+
 
 ![tt](static/tempAqua_archiving.png)
 
@@ -174,8 +173,10 @@ To run a script
 1. From the `QGIS survey project` copy the table you want to archive and paste it in the `QGIS manager project`. 
 1. double click on the script. The following window will appear:
 ![tt](static/tempAqua_archiving_2.png)
-2. Add optional information to be saved in the archived table. This information can be used to describe the survey or any changes made.
-3. Click on `Run` button. The script will run and a log will be displayed in the window. The log will indicate the number of features that have been archived.
+1. Select the layer you want to archive.
+1. Select the layer you want to use as archive.
+1. Add optional information to be saved in the archived table. This information can be used to describe the survey or any changes made.
+1. Click on `Run` button. The script will run and a log will be displayed in the window. The log will indicate the number of features that have been archived.
 
 
 
