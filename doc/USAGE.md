@@ -3,9 +3,24 @@
 
 # User guide
 
-## Deploy QGIS project on QFieldCloud
+This page give information on how to use the TempAqua application.
 
-These few steps should only be performed once during the project initialization process.
+
+
+## How to work with TempAqua ? 
+
+
+The standard process for working with TempAqua is as follows: 
+
+![tt](static/process.png)
+
+
+
+## Publish the survey (QGIS project) on QFieldCloud
+
+### Initial publication
+
+> These few steps should only be performed once during the project initialization process.
 
 1. Create an emplty folder where you want to store the project
 
@@ -14,7 +29,7 @@ These few steps should only be performed once during the project initialization 
 3. From QGIS, open the template project as follow : 
    
    - In QGIS > Browser > GeoPackage
-     ![   ](doc/static/deploy_step3.png)
+     ![   ](static/deploy_step3.png)
    
    - Right click > New Connection ... > open `.../TempAqua_App/qgis/TempAqua.gpkg`
    
@@ -26,7 +41,7 @@ These few steps should only be performed once during the project initialization 
    
    - In QGIS > Browser > QFieldCloud > My projects
    - Right click > Create new project
-     ![   ](doc/static/deploy_step4.png)
+     ![   ](static/deploy_step4.png)
    - Convert currently open project to cloud project (recommended)
    - Click next and fill the required information
    - Chose you local folder
@@ -36,13 +51,57 @@ These few steps should only be performed once during the project initialization 
    
    - Open the newly created QGIS project
    - In Layers planel > Right click on the segments layer > Properties 
-        ![   ](doc/static/deploy_step5.png)
+        ![   ](static/deploy_step5.png)
    - In QField tab > change Cloud layer action to `Directly access data source`
 
 6. Push changes to QFieldCloud:
    
    - Save project
    - Menu `Plugins` > `QFieldSync` > `Synchronize Current Cloud Project`
+
+
+
+
+### Update a existing QGIS project and data on QFieldCloud
+
+
+> These few steps is performed when the QGIS project has already been published on QFieldCloud and you want to update it.
+
+
+1. On GIS, click `Plugins` > `QFieldSync` > `Synchronize Current Cloud Project`
+
+2. On the window that appears, click `Prefer Local` button. This will upload the local project to QFieldCloud and overwrite the existing project.
+
+3. Click `Perform Action` button
+
+   ![   ](static/qgisfiledcloud_1.png)
+
+
+
+## QfieldCloud project management
+
+Please refer to the [official documentation](https://docs.qfield.org/get-started/tutorials/get-started-qfc/) for more information on how to manage QFieldCloud projects.
+
+
+
+
+## Qfield 
+
+Please refer to the [official documentation](https://docs.qfield.org/get-started/) for more information on how to manage QField projects on the mobile devices.
+
+
+
+## Get the data from QFieldCloud to QGIS
+
+To get the data from your field data collection, you need to download the data from QFieldCloud to QGIS. This is done as follow:
+
+1. On GIS, click `Plugins` > `QFieldSync` > `Synchronize Current Cloud Project`
+
+2. On the window that appears, click `Prefer Cloud` button. 
+
+3. Click `Perform Action` button
+
+
 
 
 
@@ -67,16 +126,30 @@ This script performs the following actions:
 ![tt](static/tempAqua_archiving.png)
 
 
-To run a script without logs
+To run a script
 
-1. double click on the script 
+1. double click on the script. The following window will appear:
+![tt](static/tempAqua_archiving_2.png)
+2. Add optional information to be saved in the archived table. This information can be used to describe the survey or any changes made.
+3. Click on `Run` button. The script will run and a log will be displayed in the window. The log will indicate the number of features that have been archived.
 
-To run a script with a log:
 
-1. Right-click on the script.
-2. Select "Edit Script...".
-3. In the code window, click on the green arrow in the menu bar above.
-4. Click "Run" on the new window that appears.
+
+
+
+### TempAqua_empty_table.py
+
+This script allows the user to empty all attributes in a table except for the primary key and geometry. This can be useful when starting a new survey and wanting to clear the table to start from scratch while maintaining the measurement positions.
+
+
+To run a script
+
+1. double click on the script. The following window will appear:
+![tt](static/tempAqua_archiving_3.png)
+2. Select the layer you want to empty.
+3. Click on `Run` button. The script will run and a log will be displayed in the window. 
+
+
 
 
 

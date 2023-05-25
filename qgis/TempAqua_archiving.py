@@ -18,6 +18,10 @@ from qgis.core import (
     QgsProcessingAlgorithm,
     QgsProject,
     QgsWkbTypes,
+    QgsProcessingParameterFeatureSource,
+    QgsProcessingParameterString,
+    QgsProcessingParameterDefinition,
+    QgsProcessing,
 )
 
 from qgis.PyQt.QtWidgets import QMessageBox
@@ -27,11 +31,15 @@ PK_NAME = "fid"
 DIFFERENCE_FIELD = "difference"
 TIMESTAMP_FIELD = "timestamp_archive"
 USER_FIELD = "user"
+INFO_FIELD = "info_archive"
 
 class TempAquaArchiving(QgsProcessingAlgorithm):
     """
     This script implements a QGIS Processing algorithm for archiving changed features
     """
+
+    INPUT = 'INPUT'
+    INFO_TEXT = 'INFO_TEXT'
 
     def tr(self, string):
         """
@@ -84,7 +92,12 @@ class TempAquaArchiving(QgsProcessingAlgorithm):
         return self.tr(description)
 
     def initAlgorithm(self, config=None):
-        pass
+        self.addParameter(QgsProcessingParameterString(
+            self.INFO_TEXT,
+            'Survey info :',
+            defaultValue= None,
+            optional=True        
+        ))
 
     def get_layer_list(self):
         """
@@ -263,7 +276,7 @@ class TempAquaArchiving(QgsProcessingAlgorithm):
         return differences
 
     def transfer_missing_features(
-        self, in_layer: str, out_layer: str, feedback
+        self, in_layer: str, out_layer: str, feedback,parameters
     ) -> None:
         """Transfer missing features from in_layer to out_layer.
 
@@ -306,6 +319,12 @@ class TempAquaArchiving(QgsProcessingAlgorithm):
                 "%d/%m/%Y %H:%M:%S"
             )
 
+            #Add info field
+            info_text = parameters[self.INFO_TEXT] 
+            if info_text:
+                feat_to_insert[INFO_FIELD] = info_text
+
+
             # New feature
             if feat_in_pk not in feat_out_list_pk:
                 list_feat_to_insert.append(feat_to_insert)
@@ -324,7 +343,7 @@ class TempAquaArchiving(QgsProcessingAlgorithm):
                 diff = self.compare_dicts(
                     dict1=feat_recent_archive_existing,
                     dict2=feat_to_insert,
-                    blacklist_keys=[PK_NAME, TIMESTAMP_FIELD,USER_FIELD,DIFFERENCE_FIELD],
+                    blacklist_keys=[PK_NAME, TIMESTAMP_FIELD,USER_FIELD,DIFFERENCE_FIELD,INFO_FIELD],
                 )
 
                 # No change on the feature
@@ -345,6 +364,8 @@ class TempAquaArchiving(QgsProcessingAlgorithm):
         Run the algorithm.
         """
 
+        self.INPUT
+
         msg_box = QMessageBox()
         msg_box.setText("This is a message.")
 
@@ -357,6 +378,6 @@ class TempAquaArchiving(QgsProcessingAlgorithm):
 
         # Run processing
         for current_layer, archive_layer in pair_of_layer:
-            self.transfer_missing_features(current_layer, archive_layer, feedback)
+            self.transfer_missing_features(current_layer, archive_layer, feedback,parameters)
 
         return {}
