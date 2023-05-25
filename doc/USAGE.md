@@ -171,7 +171,7 @@ To run a script
 
 
 1. From the `QGIS survey project` copy the table you want to archive and paste it in the `QGIS manager project`. 
-1. double click on the script. The following window will appear:
+1. Double click on the script. The following window will appear:
 ![tt](static/tempAqua_archiving_2.png)
 1. Select the layer you want to archive.
 1. Select the layer you want to use as archive.

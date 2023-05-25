@@ -55,6 +55,6 @@ To install the processing script, follow these steps:
 
 1. In QGIS, with the project open, go to Processing > Toolbox.
 2. On the second icon from the left, select “Add a script to Toolbox…”.
-3. Navigate to the `/qgis/` folder and select the script.
+3. Navigate to the `/qgis/` folder and select the python script.
 
 The script will appear at the bottom of the window.
