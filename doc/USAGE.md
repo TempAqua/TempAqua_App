@@ -155,9 +155,17 @@ To get the data from your field data collection, you need to download the data f
 
 ## Step 5: Archive the data (optional).
 
+After returning from the field, you may want to archive the data you collected. To do this, it is recommended that you create a separate project for archiving the data, rather than shipping it with the original field project.
+
+We suggest using the `TempAqua_manager` project to archive the data. You can copy and paste the `anchor_point` and `media` layers into this project, and then run the `TempAqua_archiving.py` script to archive the data.
+
+
+![tt](static/archive.png)
+
+
 ### Archive the survey data
 
-> We developed a set of scripts to automate the data collection process. These scripts are located in the `/qgis/` folder. The following sections describe how to use these scripts. Installation process can be found [here](INSTALLATION.md).
+> We developed a set of scripts `TempAqua_archiving.py`  to automate the data collection process. These scripts are located in the `/qgis/` folder. The following sections describe how to use these scripts. Installation process can be found [here](INSTALLATION.md).
 
 
 This script copy the modified feature from one table to another one. 
