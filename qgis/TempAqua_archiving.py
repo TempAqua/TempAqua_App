@@ -98,7 +98,7 @@ class TempAquaArchiving(QgsProcessingAlgorithm):
             QgsProcessingParameterFeatureSource(
                 self.INPUT,
                 self.tr('Input layer'),
-                [QgsProcessing.TypeVectorAnyGeometry]
+                [QgsProcessing.TypeVector]
             )
         )
         
@@ -106,7 +106,7 @@ class TempAquaArchiving(QgsProcessingAlgorithm):
             QgsProcessingParameterFeatureSource(
                 self.OUTPUT,
                 self.tr('Output layer (archive)'),
-                [QgsProcessing.TypeVectorAnyGeometry]
+                [QgsProcessing.TypeVector]
             )
         )
         
