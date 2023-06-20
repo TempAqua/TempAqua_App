@@ -87,6 +87,7 @@ Schema of these steps :
    - Menu `Plugins` > `QFieldSync` > `Synchronize Current Cloud Project`
 
 
+![Video](static/step0.mp4)
 
 
 ## Step 1: Set up and publish the QGIS project to QFieldCloud.
