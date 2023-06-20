@@ -45,7 +45,11 @@ Schema of these steps :
 
 ## Step 0: Initialize the QGIS project for the survey.
 
+📺 [Step 0 full video](https://raw.githubusercontent.comTempAqua/TempAqua_App/main/doc/static/step0.mp4)
+
+
 ### Initial publication
+
 
 > These few steps should only be performed once during the project initialization process.
 
@@ -87,10 +91,13 @@ Schema of these steps :
    - Menu `Plugins` > `QFieldSync` > `Synchronize Current Cloud Project`
 
 
-![Video](static/step0.mp4)
+
+
+
 
 
 ## Step 1: Set up and publish the QGIS project to QFieldCloud.
+
 
 
 ### Remove existing attributes
