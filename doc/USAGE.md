@@ -46,7 +46,7 @@ Schema of these steps :
 ## Step 0: Initialize the QGIS project for the survey.
 
 📺 [Step 0 full video](https://raw.githubusercontent.com/TempAqua/TempAqua_App/main/doc/static/step0.mp4)
-
+ 
 
 ### Initial publication
 
@@ -98,7 +98,7 @@ Schema of these steps :
 
 ## Step 1: Set up and publish the QGIS project to QFieldCloud.
 
-
+📺 [Step 1 full video](https://raw.githubusercontent.com/TempAqua/TempAqua_App/main/doc/static/step0.mp4)
 
 ### Remove existing attributes
 
