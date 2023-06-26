@@ -156,6 +156,8 @@ Please refer to the [official documentation](https://docs.qfield.org/get-started
 
 ## Step 4: Retrieve data from QFieldCloud to the local QGIS project.
 
+📺 [Step 4 - full video](https://raw.githubusercontent.com/TempAqua/TempAqua_App/main/doc/static/step4.mp4)
+
 To get the data from your field data collection, you need to download the data from QFieldCloud to QGIS. This is done as follow:
 
 1. On GIS, click `Plugins` > `QFieldSync` > `Synchronize Current Cloud Project`
@@ -168,6 +170,8 @@ To get the data from your field data collection, you need to download the data f
 
 
 ## Step 5: Archive the data (optional).
+
+📺 [Step 5 - full video](https://raw.githubusercontent.com/TempAqua/TempAqua_App/main/doc/static/step5.mp4)
 
 After returning from the field, you may want to archive the data you collected. To do this, it is recommended that you create a separate project for archiving the data, rather than shipping it with the original field project.
 
