@@ -144,6 +144,12 @@ Please refer to the [official documentation](https://docs.qfield.org/get-started
 
 ## Step 3: Collect data in the field with Qfield.
 
+📺 [Step 3 - Get the project from the QfieldCloud](https://raw.githubusercontent.com/TempAqua/TempAqua_App/main/doc/static/step3_get_project.mp4)
+
+📺 [Step 3 - Modify one feature](https://raw.githubusercontent.com/TempAqua/TempAqua_App/main/doc/static/step3_edit_attributes.mp4)
+
+📺 [Step 3 - Add one feature](https://raw.githubusercontent.com/TempAqua/TempAqua_App/main/doc/static/step3_add_feature.mp4)
+
 Please refer to the [official documentation](https://docs.qfield.org/get-started/) for more information on how to manage QField projects on the mobile devices.
 
 
