@@ -28,7 +28,7 @@ Option 1 : With git
 
 Option 2 : Download the zip file 
 
-    Download [this file](https://github.com/TempAqua/TempAqua_App/archive/refs/heads/main.zip) and unzip it on you localmchaine. 
+    Download [this file](https://github.com/TempAqua/TempAqua_App/archive/refs/heads/main.zip) and unzip it on you local machine. 
 
 
 ### Create QFieldCloud account
@@ -37,9 +37,9 @@ Visit the web page of https://qfield.cloud/ and follow the intructions.
 
 A Pro account is a prerequisite for :
 
-* sharing your project privately among different user on the field.
+* sharing your project privately among different users while being in the field.
 
-* having 1 GB of disk space in the cloud (100 MB for the free version). Uploading videos could be heavy.  
+* having 1 GB of disk space in the cloud (100 MB for the free version). Uploading videos could use a lot of data.  
 
 ### Install QField on your mobile device
 
