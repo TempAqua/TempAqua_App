@@ -30,5 +30,5 @@ The App also syncs previoulsy exported surveys, so that all  users with access t
 
 
 # Authors
-* Izabela Bujak, ECHO 
-* Dr Jana von Freyberg, ECHO
+* Izabela Bujak, WR-Lab & ECHO 
+* Dr Jana von Freyberg, WR-Lab
