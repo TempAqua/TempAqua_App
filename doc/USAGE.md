@@ -64,7 +64,7 @@ Schema of these steps :
    
    - Right click > New Connection ... > open `.../TempAqua_App/qgis/TempAqua_Qfield.gpkg`
    
-   - In `TempAqua.gpkg` > Double click `TempAqua` to open the project
+   - In `TempAqua.gpkg` > Double click `TempAqua_Qfield` to open the project
      
      Loading the TempAqua template project provides access to fictitious data that can be edited as desired.
 
@@ -104,7 +104,7 @@ Schema of these steps :
 
 > We developed a set of scripts to automate the data collection process. These scripts are located in the `/qgis/` folder. The following sections describe how to use these scripts. Installation process can be found [here](INSTALLATION.md).
 
-This `TempAqua_empty_table.py` script allows the user to empty all attributes in a table except for the primary key and geometry. This can be useful when starting a new survey and wanting to clear the table to start from scratch while maintaining the measurement positions.
+This `TempAqua_empty_attributes.py` script allows the user to empty all attributes in a table except for the primary key and geometry. This can be useful when starting a new survey and wanting to clear the table to start from scratch while maintaining the measurement positions.
 
 
 To run a script
