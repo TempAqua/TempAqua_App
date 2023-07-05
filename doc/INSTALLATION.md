@@ -28,7 +28,7 @@ Option 1 : With git
 
 Option 2 : Download the zip file 
 
-    Download [this file](https://github.com/TempAqua/TempAqua_App/archive/refs/heads/main.zip) and unzip it on you localmchaine. 
+    Download [this file](https://github.com/TempAqua/TempAqua_App/archive/refs/heads/main.zip) and unzip it on you local machine. 
 
 
 ### Create QFieldCloud account
@@ -54,7 +54,7 @@ To install, please follow [this link](https://docs.qfield.org/get-started/).
 To install the processing script, follow these steps:
 
 1. In QGIS, with the project open, go to Processing > Toolbox.
-2. On the second icon from the left, select “Add a script to Toolbox…”.
+2. Click the Python button (second icon to the left) and select “Add a script to Toolbox…”.
 3. Navigate to the `/qgis/` folder and select the python script.
 
 The script will appear at the bottom of the window.
