@@ -4,12 +4,12 @@
 
 # Installation
 
-The following are the steps to install and utilize the TempAqua app, using a sample project as an example. After completing the installation process, users will have the capability to create their own data collection tool.
+Here we describe the steps to install and utilize the TempAqua app, using ae example project. After completing the installation process, users will have the capability to create their own data collection tool.
 
 
 ### QGIS
 
-1. Download and Install the latest version (>= 3.30) from the [official web page](https://www.qgis.org/en/site/forusers/download.html).
+1. Download and install the latest version (>= 3.30) from the [official web page](https://www.qgis.org/en/site/forusers/download.html).
 
 2. In QGIS, open the plugin library and search for **qfield sync**. Select
    the plugin in the list and click on **Install**.
@@ -28,7 +28,7 @@ Option 1 : With git
 
 Option 2 : Download the zip file 
 
-    Download [this file](https://github.com/TempAqua/TempAqua_App/archive/refs/heads/main.zip) and unzip it on you localmchaine. 
+    Download [this file](https://github.com/TempAqua/TempAqua_App/archive/refs/heads/main.zip) and unzip it on you local machine. 
 
 
 ### Create QFieldCloud account
@@ -37,9 +37,9 @@ Visit the web page of https://qfield.cloud/ and follow the intructions.
 
 A Pro account is a prerequisite for :
 
-* sharing your project privately among different user on the field.
+* sharing your project privately among different users that conduct surveys.
 
-* having 1 GB of disk space in the cloud (100 MB for the free version). Uploading videos could be heavy.  
+* having 1 GB of disk space in the cloud (100 MB for the free version). Uploading videos could be data-heavy.  
 
 ### Install QField on your mobile device
 
@@ -54,7 +54,7 @@ To install, please follow [this link](https://docs.qfield.org/get-started/).
 To install the processing script, follow these steps:
 
 1. In QGIS, with the project open, go to Processing > Toolbox.
-2. On the second icon from the left, select “Add a script to Toolbox…”.
+2. Click the Python button (second icon to the left) and select “Add a script to Toolbox…”.
 3. Navigate to the `/qgis/` folder and select the python script.
 
 The script will appear at the bottom of the window.
